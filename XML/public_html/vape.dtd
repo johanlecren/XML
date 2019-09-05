@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Vapoteuse
+-contient de 0 à N 
+-->
+
+
+<!ELEMENT vapoteuse (pod+, box+, liquide+)>
+<!ELEMENT liquide (saveur+, volume+, nicotine*)>
+<!ELEMENT box (batterie+, ikku+)>
+<!ELEMENT saveur (fruite*,gourmand*, menthe*,classique*, boisson*)>
+<!ELEMENT pod (EMPTY)>
+<!ATTLIST pod typeDePod (ato|clearo|dripper) "ato">
+
+<!ELEMENT volume (#PCDATA)>
+<!ELEMENT nicotine (#PCDATA)>
+<!ELEMENT batterie (#PCDATA)>
+<!ELEMENT ikku (#PCDATA)>
+<!ELEMENT fruite (#PCDATA)>
+<!ELEMENT gourmand (#PCDATA)>
+<!ELEMENT menthe (#PCDATA)>
+<!ELEMENT classique (#PCDATA)>
+<!ELEMENT boisson (#PCDATA)>
