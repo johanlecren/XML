@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+
+<!ELEMENT bibliotheque (allee+)>
+<!ELEMENT allee (rayons+, numeroA)>
+<!ELEMENT rayons (ouvrage?, numeroR?)>
+<!ELEMENT ouvrage (titre, auteur?, numeroO?)>
+<!ATTLIST ouvrage typeOuvrage (litterature|manuelScolaire|periodique|scienceEtTechnique) "litterature">
+<!ELEMENT titre (#PCDATA)>
+<!ELEMENT auteur (#PCDATA)>
+<!ELEMENT numeroR (#PCDATA)>
+<!ELEMENT numeroA (#PCDATA)>
+<!ELEMENT numeroO (#PCDATA)>
