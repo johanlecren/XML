@@ -18,79 +18,75 @@
         <html>
 
             <body>
-                <xsl:apply-templates/>
-                
+                <table>
+                    <xsl:apply-templates/>
+                    
+                    
+                </table>
             </body>
         </html>
+
+        <td>
+        </td>
+
+    </xsl:template>
+
+    <xsl:template match="allees">
+        <h1> Allées <xsl:value-of select="numero"/> </h1>
+        <hr/>
+        <xsl:apply-templates />
+    </xsl:template>
+                 
+             
+               
+       
+    <xsl:template match="rayon">                  
+        <h2> Rayon  <xsl:value-of select="@numeroR"/> </h2>    
         <table>
-            <td>
+            <tr>
+                <th> Categorie d'Ouvrage </th>
+                <th> Titre </th> 
+                <th> Auteur </th>
+                <th> Numero d'Ouvrage </th>
+            </tr>                     
+            <xsl:apply-templates />    
+        </table>             
+    </xsl:template>
+                 
+    <xsl:template match="ouvrage">       
+                      
+        <tr>
+            <td> 
+                <xsl:value-of select="@typeOuvrage"/> 
             </td>
-        </table>
+            <td> 
+                <xsl:value-of select="titre"/> 
+            </td> 
+                          
+            <xsl:choose>
+                <xsl:when test="auteur!='null'">
+                    <td>
+                        <xsl:value-of select="auteur"/>
+                    </td>
+                </xsl:when>
+                <xsl:otherwise>
+                    <td>Pas d'auteur</td>
+                </xsl:otherwise>
+            </xsl:choose>  
+            <xsl:choose>
+                <xsl:when test="numeroO!='null'">
+                    <td>
+                        <xsl:value-of select="numeroO"/>
+                    </td>
+                </xsl:when>
+                <xsl:otherwise>
+                    <td>Pas de numéro d'ouvrage</td>
+                </xsl:otherwise>
+            </xsl:choose>  
+          
+                     
+        </tr>                        
     </xsl:template>
-
-        <xsl:template match="allee">
-            <xsl:value-of select="@rayon"/>
-            <table border="2">
-                <xsl:apply-templates/>
-            </table>
-        </xsl:template>
-  
-        <xsl:template match="rayon">
-            <xsl:value-of select="@ouvrages"/>
-            <table border="500">
-                <xsl:apply-templates/>
-            </table>
-        </xsl:template>
-
-    <xsl:template match="ouvrages">
-        <xsl:value-of select="@ouvrages"/>
-        <table border="1">
-            <xsl:apply-templates/>
-        </table>
-    </xsl:template> 
-    
-    <xsl:template match="titre">
-        <xsl:value-of select="@ouvrages"/>
-        <tr bgcolor="#0000FF">
-            <xsl:value-of select="."/>
-        </tr>
-
-    </xsl:template> 
-
-    <xsl:template match="auteur">
-        <xsl:value-of select="@ouvrages"/>
-        <tr bgcolor="#00FF00">
-            <xsl:value-of select="."/>
-        </tr>
-  
-    </xsl:template>
-    
-    <xsl:template match="numeroO">
-        <xsl:value-of select="@ouvrages"/>
-        <tr bgcolor="#FF0000">
-            <xsl:value-of select="."/>
-        </tr>
-
-    </xsl:template>  
-    
-        
-    <xsl:template match="numeroA">
-        <xsl:value-of select="@numeroA"/>
-        <tr bgcolor="#FFFF00">
-            <xsl:value-of select="."/>
-        </tr>
-
-    </xsl:template>  
-    
-    
-        
-    <xsl:template match="numeroR">
-        <xsl:value-of select="@numeroR"/>
-        <tr bgcolor="#FF00FF">
-            <xsl:value-of select="."/>
-        </tr>
-
-    </xsl:template>  
     
     
 </xsl:stylesheet>
