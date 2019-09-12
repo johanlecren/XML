@@ -1,0 +1,82 @@
+ <xsl:template match="ligne">
+        <tr>
+          <xsl:apply-templates />  
+          </tr>
+    </xsl:template>
+    
+    <xsl:template match="pays">
+            <td> <xsl:value-of select=" @nomDePays"/></td>
+            <xsl:apply-templates />  
+    </xsl:template>
+ 
+      <xsl:template match="medaille">
+           <xsl:choose>
+            <xsl:when test="@typeDeMedaille ='Or'">
+                <td class="or"> 
+                    <xsl:apply-templates/>
+                </td>
+            </xsl:when>           
+            <xsl:when test="@typeDeMedaille ='Argent'">
+                <td class="argent"> 
+                    <xsl:apply-templates/>
+                </td>
+            </xsl:when>            
+            <xsl:when test="@typeDeMedaille ='Bronze'">
+                <td class="bronze"> 
+                    <xsl:apply-templates/>
+                </td>
+            </xsl:when>               
+        </xsl:choose>
+      </xsl:template>
+</xsl:stylesheet>
+
+
+
+
+
+table{
+    border-collapse: collapse;  
+    border: 2px ridge black;
+    text-align: center;
+}
+tr{
+    border: solid black 1px
+}
+td{
+    border: solid black 1px
+}
+th{
+    border: 1px solid black;
+    background-color: #99ff99
+}
+.or{
+    
+    background-color: gold;
+    
+}
+
+.argent{
+    
+    background-color: silver;
+    
+}
+
+.bronze{
+    
+    background-color: #996600;
+    
+}
+
+
+
+
+
+
+<!ELEMENT JO2016 (tableau)>
+<!ELEMENT tableau (ligne*)>
+<!ELEMENT ligne (pays,medaille,medaille,medaille,total?)>
+<!ELEMENT pays (EMPTY)>
+<!ELEMENT medaille (#PCDATA)>
+<!ELEMENT total (#PCDATA)>
+<!ATTLIST pays nomDePays (USA|GrandeBretagne|Chine|Russie|Allemagne|Japon|France|CoréeduSud|Italie|Australie) #REQUIRED>
+<!ATTLIST medaille typeDeMedaille (Or | Argent | Bronze) #REQUIRED>
